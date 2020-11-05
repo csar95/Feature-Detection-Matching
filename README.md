@@ -1,5 +1,3 @@
 # Feature-Detection-Matching
 
-Following https://youtu.be/nnH55-zD38I
-
-Build a detector ORB (Oriented Fast and Rotated BRIEF).
+Build a detector ORB (Oriented Fast and Rotated BRIEF) that detects the video-game captured by the web-cam. (Following https://youtu.be/nnH55-zD38I).
