@@ -7,6 +7,7 @@ IMAGES_QUERY_PATH = "./Resources/ImagesQuery"
 IMAGES_TRAIN_PATH = "./Resources/ImagesTrain"
 IMG_HEIGHT, IMG_WIDTH = 403, 720
 NUM_FEATURES_DETECTOR = 1000
+NUM_MATCHES_THRESHOLD = 15
 
 #################### PRINT COLORS
 
@@ -29,3 +30,13 @@ def find_descriptors(img):
 
     # Return keypoints and descriptors for the input image
     return orb.detectAndCompute(img, None)  # kp, desc
+
+def count_good_matches(matches):
+    good_matches = []
+
+    # Decide what are good matches based on the distance between two features
+    for m, n in matches:  # Because k=2, there'll be two values to unpack
+        if m.distance < 0.75 * n.distance:
+            good_matches.append([m])
+
+    return len(good_matches), good_matches
